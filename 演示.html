@@ -72,6 +72,13 @@
 		}
     </style>
 </head>
+<script>
+function cul(){
+	var formulas = element.getElementsByTagName("formula_show_to_au");
+	formulas.innerHTML = "4";
+	document.getElementById("demo").innerHTML = "66666";
+}
+</script>
 <body>
     <form id="form1" runat="server">
         <div>
@@ -96,6 +103,7 @@
 						</select>
 					</div>
 					<div id="formula_show">
+						<p id="demo">555</p>
 						<font size="5" name="formula_show_to_au">样例<br>公式：</font>
 					</div>
 					<div id="cul_bottun">
