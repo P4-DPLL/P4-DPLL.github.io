@@ -1,0 +1,88 @@
+<!doctype html>
+<title>P4-DPLL</title>
+<link rel="stylesheetttt" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+		body, html {
+            margin: 0px;
+        }
+        #header {
+			background-color:black;
+			color:white;
+			text-align:center;
+            height:100px;
+			width:100%;
+            position: absolute;
+            top: 0;
+        }
+        #middle {
+            position:absolute;
+            width:100%;
+            height:auto;
+            top: 100px;
+            bottom:0;                  
+        }
+        .left {
+            width: 10%;   
+            background-color: gray;
+            float: left;
+            height:100%;
+        }
+        .right {
+            width: 90%;
+            height: 100%;
+            background-color: white;
+            float: right;
+			z-index:-1;
+        }
+        #footer {
+            background-color: black;
+            height: 50px;
+			color:white;
+            width: 100%;
+            position: absolute;
+			text-align:center;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div id="header">
+                <h1>P4-DPLL</h1>        
+            </div>
+            <div id="middle">
+                <div class="left">
+                    <font size="6"><a href="index">Home</a></font><br>
+					<br>
+                    <font size="6"><a href="example">Example</a></font><br>
+					<br>
+                    <font size="6"><a href="code">Code</a></font><br>
+					<br>
+                    <font size="6"><a href="Publications">Publics</a></font><br>
+                </div>
+                <div class="right">
+				People have been leveraging the capabilities of programmable switches, which are programmable in the data plane and process packets at the line rate, to improve the performance of distributed systems. However, few have explored whether programmable switches can speed up problem-solving. In this paper, we take a first step to explore the feasibility and benefits of this line of research. Specifically, we select the SAT problem, one of the most fundamental problems in computer science, as a case study. Our intuition is that by exploiting the parallel lookup capability of programmable switches, we can substantially speed up the process of checking whether an assignment is a solution to a SAT problem. 
+				In particular, we base on the classical DPLL algorithm and design P4-DPLL, which consists of (1) match action tables using TCAM to quickly check assignment satisfiability and find unit variables, and (2) a stack data structure using register and SRAM to efficiently make variable search decisions in the data plane.
+				We implement a prototype of P4-DPLL and evaluate its performance extensively. Results show that P4-DPLL improves the solving time by 101x speedup on 90% quantile of all test cases, compared with a CPU-based DPLL implementation.
+
+				You can find our code, samples and papers here. 
+                </div>
+            </div>
+            <div id="footer">
+                <font size="4"> </font>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+    
+</div>
