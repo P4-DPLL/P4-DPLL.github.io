@@ -12,7 +12,8 @@
 		body, html {
             margin: 0px;
         }
-		button:first-child{height:60px;weight:60px}
+		button:first-child{height:40px;weight:60px}
+		button:last-child{height:40px;weight:60px}
         #header {
 			background-color:black;
 			color:white;
@@ -22,6 +23,11 @@
             position: absolute;
             top: 0;
         }
+		#formula {
+			position:absolute;
+			left:380px;
+            top: 60px;
+		}
         #middle {
             position:absolute;
             width:100%;
@@ -55,11 +61,15 @@
 			text-align:center;
             height:100px;
             position: absolute;
-			left:640px;
-            top: 430px;
+			left:730px;
+            top: 150px;
 			z-index:100;
-			color:black;
         }
+		#formula_show {
+			position:absolute;
+			left:380px;
+            top: 120px;
+		}
     </style>
 </head>
 <body>
@@ -77,8 +87,23 @@
                     <font size="6"><a href="代码">Code</a></font><br>
                 </div>
                 <div class="right">
+					<div id="formula">
+						<font size="5">样例公式：</font>
+						<select name="selectList" style="font-size:20px; ">
+							<option>样例1</option>
+							<option>样例2</option>
+							<option>样例3</option>
+						</select>
+					</div>
+					<div id="formula_show">
+						<font size="5" name="formula_show_to_au">样例<br>公式：</font>
+					</div>
 					<div id="cul_bottun">
-						<button type="button" onclick="attack()"><font size="6">求解</font></button>
+						<button type="button" onclick="cul()"><font size="4">求解</font></button>
+						<br>
+						<br>
+						<br>
+						<button type="button" onclick="get()"><font size="4">求值</font></button>
 					</div>
                 </div>
             </div>
