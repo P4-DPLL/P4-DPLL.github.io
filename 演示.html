@@ -80,6 +80,11 @@
 			left:880px;
             top: 180px;
 		}
+		#gif-server-switch {
+			position:absolute;
+			left:590px;
+            top: 270px;
+		}
     </style>
 </head>
 <script>
@@ -88,7 +93,18 @@ myformulas[0]="";
 myformulas[1]="(!x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br> ( x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br>( x<sub>1</sub> ∨ x<sub>2</sub> ∨!x<sub>3</sub> )";
 myformulas[2]="( x<sub>1</sub> ∨!x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br> (!x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br>(!x<sub>1</sub> ∨!x<sub>2</sub> )";
 myformulas[3]="( x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br> ( x<sub>1</sub> ∨!x<sub>3</sub> ) ∧<br>(!x<sub>1</sub> ) ∧<br>(!x<sub>2</sub> )";
+function change_to_st(){
+	document.getElementById("giff").src = "st-gif.png";
+}
+function change_to_gif(){
+	document.getElementById("giff").src = "gif.gif";
+}
+function cul_sat_in(){
+	change_to_gif();
+	setTimeout("cul_sat()",6500);
+}
 function cul_sat(){
+	change_to_st();
 	var x = document.getElementById("selectList").value;
 	if(x==1)
 	{
@@ -106,7 +122,12 @@ function cul_sat(){
 		document.getElementById("ans_sat").color = "red";
 	}
 }
+function cul_value_in(){
+	change_to_gif();
+	setTimeout("cul_value()",6500);
+}
 function cul_value(){
+	change_to_st();
 	var x = document.getElementById("selectList").value;
 	if(x==1)
 	{
@@ -152,6 +173,9 @@ function sel(){
                     <font size="6"><a href="代码">Code</a></font><br>
                 </div>
                 <div class="right">
+					<div id="gif-server-switch">
+						<img id="giff" src="st-gif.png" height="220" width="400">
+					</div>
 					<div id="formula">
 						<font size="5">样例公式：</font>
 						<select id="selectList" style="font-size:20px; " onchange="sel()">
@@ -166,11 +190,11 @@ function sel(){
 						</font>
 					</div>
 					<div id="cul_bottun">
-						<button type="button" onclick="cul_sat()"><font size="4">求解</font></button>
+						<button type="button" onclick="cul_sat_in()"><font size="4">求解</font></button>
 						<br>
 						<br>
 						<br>
-						<button type="button" onclick="cul_value()"><font size="4">求值</font></button>
+						<button type="button" onclick="cul_value_in()"><font size="4">求值</font></button>
 					</div>
 					<div id="answer_sat">
 						<font size="5" color="black">可满足性：</font>
@@ -179,7 +203,6 @@ function sel(){
 					<div id="answer_value">
 						<font size="5">可满足的赋值：</font><br>
 						<font size="5" color="red" id="ans_value"></font>
-						<img src="gif.gif" height="200" width="300">
 					</div>
                 </div>
             </div>
