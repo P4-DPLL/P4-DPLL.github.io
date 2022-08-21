@@ -50,6 +50,14 @@
 			text-align:center;
             bottom: 0;
         }
+		#cul_bottun {
+			text-align:center;
+            height:100px;
+            position: absolute;
+			left:640px;
+            top: 430px;
+			z-index:100;
+        }
     </style>
 </head>
 <body>
@@ -67,12 +75,8 @@
                     <font size="6"><a href="代码">Code</a></font><br>
                 </div>
                 <div class="right">
-					<div id="attack_bottun">
-						<font size="5">输入屏蔽词：</font>
-						<input id="key_word" type="text" value="girl">
-						<br>
-						<br>
-						<button type="button" onclick="attack()">攻击</button>
+					<div id="cul_bottun">
+						<button type="button" onclick="attack()">求解</button>
 					</div>
                 </div>
             </div>
