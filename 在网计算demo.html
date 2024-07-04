@@ -1,0 +1,218 @@
+<!doctype html>
+<title>P4-DPLL</title>
+<link rel="stylesheetttt" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+		body, html {
+            margin: 0px;
+        }
+		button:first-child{height:40px;weight:60px}
+		button:last-child{height:40px;weight:60px}
+        #header {
+			background-color:black;
+			color:white;
+			text-align:center;
+            height:100px;
+			width:100%;
+            position: absolute;
+            top: 0;
+        }
+		#formula {
+			position:absolute;
+			left:393px;
+            top: 80px;
+		}
+        #middle {
+            position:absolute;
+            width:100%;
+            height:auto;
+            top: 100px;
+            bottom:0;                  
+        }
+        .left {
+            width: 10%;   
+            background-color: gray;
+            float: left;
+            height:100%;
+        }
+        .right {
+            width: 90%;
+            height: 100%;
+            background-color: white;
+            float: right;
+			z-index:-1;
+        }
+        #footer {
+            background-color: black;
+            height: 50px;
+			color:white;
+            width: 100%;
+            position: absolute;
+			text-align:center;
+            bottom: 0;
+        }
+		#cul_bottun {
+			text-align:center;
+            height:100px;
+            position: absolute;
+			left:730px;
+            top: 150px;
+			z-index:110;
+        }
+		#formula_show {
+			position:absolute;
+			left:380px;
+            top: 130px;
+		}
+		#answer_sat {
+			position:absolute;
+			left:880px;
+            top: 130px;
+		}
+		#answer_value {
+			position:absolute;
+			left:880px;
+            top: 180px;
+		}
+		#gif-server-switch {
+			position:absolute;
+			left:590px;
+            top: 270px;
+		}
+    </style>
+</head>
+<script>
+var myformulas = new Array(4);
+myformulas[0]="";
+myformulas[1]="(!x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br> ( x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br>( x<sub>1</sub> ∨ x<sub>2</sub> ∨!x<sub>3</sub> )";
+myformulas[2]="( x<sub>1</sub> ∨!x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br> (!x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br>(!x<sub>1</sub> ∨!x<sub>2</sub> )";
+myformulas[3]="( x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br> ( x<sub>1</sub> ∨!x<sub>3</sub> ) ∧<br>(!x<sub>1</sub> ) ∧<br>(!x<sub>2</sub> )";
+function change_to_st(){
+	document.getElementById("giff").src = "st-gif.png";
+}
+function change_to_gif(){
+	document.getElementById("giff").src = "gif.gif";
+}
+function cul_sat_in(){
+	change_to_gif();
+	setTimeout("cul_sat()",6500);
+}
+function cul_sat(){
+	change_to_st();
+	var x = document.getElementById("selectList").value;
+	if(x==1)
+	{
+		document.getElementById("ans_sat").innerHTML = "是";
+		document.getElementById("ans_sat").color = "green";
+	}
+	else if(x==2)
+	{
+		document.getElementById("ans_sat").innerHTML = "是";
+		document.getElementById("ans_sat").color = "green";
+	}
+	else if(x==3)
+	{
+		document.getElementById("ans_sat").innerHTML = "否";
+		document.getElementById("ans_sat").color = "red";
+	}
+}
+function cul_value_in(){
+	change_to_gif();
+	setTimeout("cul_value()",6500);
+}
+function cul_value(){
+	change_to_st();
+	var x = document.getElementById("selectList").value;
+	if(x==1)
+	{
+		document.getElementById("ans_sat").innerHTML = "是";
+		document.getElementById("ans_sat").color = "green";
+		document.getElementById("ans_value").innerHTML = "x<sub>1</sub> = <span style=\"color:green\">True</span><br>x<sub>2</sub> = <span style=\"color:green\">True</span><br>x<sub>3</sub> = <span style=\"color:green\">True</span>";
+		document.getElementById("ans_value").color = "black";
+	}
+	else if(x==2)
+	{
+		document.getElementById("ans_sat").innerHTML = "是";
+		document.getElementById("ans_sat").color = "green";
+		document.getElementById("ans_value").innerHTML = "x<sub>1</sub> = <span style=\"color:red\">False</span><br>x<sub>2</sub> = <span style=\"color:green\">True</span><br>x<sub>3</sub> = <span style=\"color:green\">True</span>";
+		document.getElementById("ans_value").color = "black";
+	}
+	else if(x==3)
+	{
+		document.getElementById("ans_sat").innerHTML = "否";
+		document.getElementById("ans_sat").color = "red";
+		document.getElementById("ans_value").innerHTML = "不存在！";
+		document.getElementById("ans_value").color = "red";
+	}
+}
+function sel(){
+	var x = document.getElementById("selectList").value;
+	document.getElementById("formula_show_to_au").innerHTML = myformulas[x];
+	document.getElementById("ans_sat").innerHTML = "";
+	document.getElementById("ans_value").innerHTML = "";
+}
+</script>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div id="header">
+                <h1>P4-DPLL</h1>        
+            </div>
+            <div id="middle">
+                <div class="left">
+                    <font size="6"><a href="首页">Home</a></font><br>
+					<br>
+                    <font size="6"><a href="演示">Demo</a></font><br>
+					<br>
+                    <font size="6"><a href="代码">Code</a></font><br>
+                </div>
+                <div class="right">
+					<div id="gif-server-switch">
+						<img id="giff" src="st-gif.png" height="220" width="400">
+					</div>
+					<div id="formula">
+						<font size="5">样例公式：</font>
+						<select id="selectList" style="font-size:20px; " onchange="sel()">
+							<option value="1">样例1</option>
+							<option value="2">样例2</option>
+							<option value="3">样例3</option>
+						</select>
+					</div>
+					<div id="formula_show">
+						<font size="6.5" id="formula_show_to_au">
+						(!x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br> ( x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub> ) ∧<br>( x<sub>1</sub> ∨ x<sub>2</sub> ∨!x<sub>3</sub> )
+						</font>
+					</div>
+					<div id="cul_bottun">
+						<button type="button" onclick="cul_sat_in()"><font size="4">求解</font></button>
+						<br>
+						<br>
+						<br>
+						<button type="button" onclick="cul_value_in()"><font size="4">求值</font></button>
+					</div>
+					<div id="answer_sat">
+						<font size="5" color="black">可满足性：</font>
+						<font size="5" color="green" id="ans_sat"></font>
+					</div>
+					<div id="answer_value">
+						<font size="5">可满足的赋值：</font><br>
+						<font size="5" color="red" id="ans_value"></font>
+					</div>
+                </div>
+            </div>
+            <div id="footer">
+                <font size="4">厦门大学 - 2048年图灵奖候选队</font>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+    
+</div>
